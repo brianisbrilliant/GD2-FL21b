@@ -29,10 +29,13 @@ public class PlayerController : MonoBehaviour
     }
 
     void Fire() {
-        Rigidbody copy = Instantiate(magicBullet, hand.position, hand.rotation);
-        copy.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse); // shoot bullet forward
-        copy.GetComponent<BulletController>().owner = hp;
-        
+        if(hp.GetMana() > 5) {
+            hp.ChangeMana(-5);
+            Rigidbody copy = Instantiate(magicBullet, hand.position, hand.rotation);
+            copy.AddRelativeForce(Vector3.forward * 50, ForceMode.Impulse); // shoot bullet forward
+            copy.GetComponent<BulletController>().owner = hp;
+            Destroy(copy.gameObject, 2);
+        }
     }
 
     void OnTriggerEnter(Collider other) {
@@ -40,6 +43,16 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy")) {
             // Debug.Log("I've hit an enemy!");
             hp.ChangeHealth(-10);
+        }
+        else if(other.gameObject.CompareTag("HealthPotion")) {
+            hp.ChangeHealth(25);
+            Destroy(other.gameObject);
+            // play drink audio clip
+        }
+        else if(other.gameObject.CompareTag("ManaPotion")) {
+            hp.ChangeMana(25);
+            Destroy(other.gameObject);
+            // play drink audio clip
         }
     }
 }

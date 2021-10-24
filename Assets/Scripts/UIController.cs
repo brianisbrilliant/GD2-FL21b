@@ -12,6 +12,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Slider healthSlider, manaSlider, xpSlider;    // we can make multiple variables on the same line!
 
+    [SerializeField]
+    private Text xpLevelText;
+
     // getters and setters
 
     //setter function
@@ -42,5 +45,9 @@ public class UIController : MonoBehaviour
 
     public void SetXPSlider(int amount) {
         xpSlider.value = amount;
+    }
+
+    public void SetXPLevelText(int level) {
+        xpLevelText.text = level.ToString();
     }
 }
