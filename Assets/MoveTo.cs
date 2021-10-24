@@ -14,6 +14,9 @@ public class MoveTo : MonoBehaviour
     }
 
    void Update() {
-       agent.destination = target.position;
+       if(Vector3.Distance(this.transform.position, target.position) < 20) {
+           agent.destination = target.position;
+       }
+       
    }
 }
