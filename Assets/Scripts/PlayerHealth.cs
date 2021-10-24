@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
 
     private float regenTimer = 1, manaRegenInterval = 1;
 
+    private bool waitingToLoseHealth = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,21 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         
+    }
+
+    void OnTriggerStay(Collider other) {
+        if(other.gameObject.CompareTag("Enemy")) {
+            if(!waitingToLoseHealth) {
+                ChangeHealth(-5);
+                StartCoroutine(TouchedByEnemyTimer());
+            }
+        }
+    }
+
+    IEnumerator TouchedByEnemyTimer() {
+        waitingToLoseHealth = true;
+        yield return new WaitForSeconds(0.5f);
+        waitingToLoseHealth = false;
     }
 
     public void ChangeHealth(int byAmount) {

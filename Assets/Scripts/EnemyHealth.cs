@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -19,9 +20,13 @@ public class EnemyHealth : MonoBehaviour
     }
 
     void Death() {
-        this.gameObject.AddComponent<Rigidbody>();  // make the enemy fall to the ground
-        Destroy(this.gameObject, 2);        // destroy the enemy in two seconds
+        Rigidbody rb = this.gameObject.AddComponent<Rigidbody>();  // make the enemy fall to the ground
+        rb.angularDrag = 1;
+        // Destroy(this.gameObject, 2);        // destroy the enemy in two seconds
         Destroy(this);                      // destroy this script immediately
+        Destroy(this.GetComponent<NavMeshAgent>());
+        Destroy(this.GetComponent<MoveTo>());
+        this.gameObject.tag = "Untagged";
         
         
     }
