@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private Text xpLevelText;
+    private int xpLevel = 1;
 
     // getters and setters
 
@@ -43,7 +44,14 @@ public class UIController : MonoBehaviour
         manaSlider.value = amount;
     }
 
+    // when I go to save and reload this, I will have to re-calculate what the level is...
     public void SetXPSlider(int amount) {
+        if(amount >= xpSlider.maxValue) {
+            xpSlider.minValue = xpSlider.maxValue;
+            xpSlider.maxValue *= 2;
+            xpLevel += 1;
+            xpLevelText.text = xpLevel.ToString();
+        }
         xpSlider.value = amount;
     }
 

@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private UIController ui;
 
-    private int health = 100, mana = 100, xp = 0, xpLevel = 1;
+    private int health = 100, mana = 100, xp = 0;
 
     private float regenTimer = 1, manaRegenInterval = 1;
 
@@ -67,12 +67,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeXP(int byAmount) {
         xp += byAmount;
-        
-        if(xp >= 100) {
-            xpLevel += 1;
-            xp = 0;
-            ui.SetXPLevelText(xpLevel);
-        }
         ui.SetXPSlider(xp);
     }
 
