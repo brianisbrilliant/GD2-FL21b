@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - HealthPotion
   - ManaPotion
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -15,10 +15,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform hand;
 
+    private PlayerSaveAndLoad save;
+
     void Start() {
         if(hp == null) {
             hp = this.GetComponent<PlayerHealth>();
         }
+
+        save = GetComponent<PlayerSaveAndLoad>();
     }
 
     // this should go in the input manager script.
@@ -53,6 +57,10 @@ public class PlayerController : MonoBehaviour
             hp.ChangeMana(25);
             Destroy(other.gameObject);
             // play drink audio clip
+        }
+        else if(other.gameObject.CompareTag("Checkpoint")) {
+            // call the Save() function.
+            save.Save();
         }
     }
 }
