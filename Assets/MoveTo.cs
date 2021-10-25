@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MoveTo : MonoBehaviour
 {
-   public Transform target;
+    public Transform target;
 
     NavMeshAgent agent;
 
@@ -14,7 +14,7 @@ public class MoveTo : MonoBehaviour
     }
 
    void Update() {
-       if(Vector3.Distance(this.transform.position, target.position) < 20) {
+       if(Vector3.Distance(this.transform.position, target.position) < 30) {
            agent.destination = target.position;
        }
        
