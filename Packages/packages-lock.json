@@ -107,6 +107,23 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "jp.keijiro.ffmpeg-out": {
+      "version": "1.0.5",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.com"
+    },
+    "jp.keijiro.recorder.ffmpeg": {
+      "version": "1.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.recorder": "2.2.0-preview.4",
+        "jp.keijiro.ffmpeg-out": "1.0.5"
+      },
+      "url": "https://registry.npmjs.com"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
