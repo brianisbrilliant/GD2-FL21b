@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,6 +62,12 @@ public class PlayerController : MonoBehaviour
         else if(other.gameObject.CompareTag("Checkpoint")) {
             // call the Save() function.
             save.Save();
+        }
+        else if(other.gameObject.CompareTag("NextLevel")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else if(other.gameObject.CompareTag("LastLevel")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 }

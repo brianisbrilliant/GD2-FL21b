@@ -11,6 +11,8 @@ TagManager:
   - ManaPotion
   - Checkpoint
   - Overview
+  - NextLevel
+  - LastLevel
   layers:
   - Default
   - TransparentFX
