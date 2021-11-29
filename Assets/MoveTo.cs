@@ -14,9 +14,16 @@ public class MoveTo : MonoBehaviour
     void Start() {
         agent = GetComponent<NavMeshAgent>();
         Debug.Log("I exist!");
+        if(target == null) {
+            target = GameObject.Find("RigidbodyFPSController").transform;
+        }
     }
 
    void Update() {
+        if(target == null) {
+            target = GameObject.Find("RigidbodyFPSController").transform;
+        }
+
         if(Vector3.Distance(this.transform.position, target.position) < 30) {
            agent.destination = target.position;
         }

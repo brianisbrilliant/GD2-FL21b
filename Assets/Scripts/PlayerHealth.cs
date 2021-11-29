@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
 
     private bool waitingToLoseHealth = false;
 
+    public int totalHealthPotions = 0, totalManaPotions = 0;
+
     PlayerSaveAndLoad save;
 
     // Start is called before the first frame update
@@ -52,8 +54,6 @@ public class PlayerHealth : MonoBehaviour
         waitingToLoseHealth = false;
     }
 
-    
-
     public void ChangeHealth(int byAmount) {
         health += byAmount;
 
@@ -70,6 +70,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         ui.SetHealthSlider(health);
+        // update the potion counts UI.
     }
 
     public void ChangeXP(int byAmount) {
