@@ -29,6 +29,6 @@ public class MoveTo : MonoBehaviour
         }
 
        
-        anim.SetFloat("Speed", agent.velocity.magnitude);
+        if(anim != null) anim.SetFloat("Speed", agent.velocity.magnitude);
    }
 }
