@@ -1,3 +1,6 @@
+// TODO: Get the true number of saves (up to ten of them)
+// TODO: Figure out how to load the save and unpause from the buttons that are generated.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
