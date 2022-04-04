@@ -19,7 +19,7 @@ public class MultiSaveAndLoad : MonoBehaviour
 {
     [SerializeField] bool debug = false;
 
-    int saveIndex = 0;
+    public int saveIndex = 0;
     PlayerHealth hp;
 
     void Start() {
@@ -35,7 +35,7 @@ public class MultiSaveAndLoad : MonoBehaviour
 
         var time = DateTime.Now;
         string saveTime = time.Hour.ToString() + ":" + time.Minute.ToString() + ":" + time.Second.ToString();
-        PlayerPrefs.SetString("SaveTime", saveTime);
+        PlayerPrefs.SetString("SaveTime" + saveIndex, saveTime);
 
         if(debug) Debug.Log("<color=red>" + saveTime + "</color>");
 
@@ -50,6 +50,8 @@ public class MultiSaveAndLoad : MonoBehaviour
                                             PlayerPrefs.GetFloat("posZ"));
 
         if(debug) Debug.DrawLine(saveLocation, saveLocation + Vector3.up * 50, Color.white, 1000);
+
+        saveIndex = (saveIndex + 1) % 10;
     }
 
     public void LoadSaveBy(int index = -1) {
@@ -66,5 +68,16 @@ public class MultiSaveAndLoad : MonoBehaviour
         pos.z = PlayerPrefs.GetFloat("posZ" + index);
 
         this.transform.position = pos;
+    }
+
+    public string LoadSaveTextBy(int index) {
+        string text = "";
+        text += index.ToString() + " ";
+        text += "HP: " + PlayerPrefs.GetInt("Health" + index) + "  ";
+        text += "time: " + PlayerPrefs.GetString("SaveTime" + index);
+
+
+
+        return text;
     }
 }

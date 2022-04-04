@@ -16,6 +16,13 @@ public class UIController : MonoBehaviour
     private Text xpLevelText;
     private int xpLevel = 1;
 
+    public GameObject pauseMenu;       // this is turned on and off by the Pause.cs script.
+
+    void Start() {
+        // turn off the pauseMenu
+        pauseMenu.SetActive(false);
+    }
+
     // getters and setters
 
     //setter function

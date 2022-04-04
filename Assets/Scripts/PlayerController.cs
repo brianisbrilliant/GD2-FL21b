@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform hand;
 
-    private PlayerSaveAndLoad save;
+    private MultiSaveAndLoad save;
 
     void Start() {
         if(hp == null) {
             hp = this.GetComponent<PlayerHealth>();
         }
 
-        save = GetComponent<PlayerSaveAndLoad>();
+        save = GetComponent<MultiSaveAndLoad>();
     }
 
     // this should go in the input manager script.
